@@ -204,7 +204,7 @@ _extractIPsFromTXT()
     local -- _TXT_RECORD=$2 _TXT_OUTPUT= _TXT_VALUE= _IP=
     local -a -- _ANSWERS=() _VALUES=()
 
-    _TXT_OUTPUT=$(dig +time=3 +tries=2 +short TXT "$_TXT_RECORD") || {
+    _TXT_OUTPUT=$(dig +time=3 +tries=2 +short TXT "$_TXT_RECORD" @1.1.1.1) || {
         _error "DNS query failed for TXT record: $_TXT_RECORD"
         return 1
     }
